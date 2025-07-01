@@ -8,7 +8,7 @@ function PostDetail({ post, onBack }) {
           className="rounded-3xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition mb-8 bg-white relative"
         >
           <img
-            src={`http://back.sistemasorder.com/uploads/images/${post.image}`}
+            src={`https://back.sistemasorder.com/uploads/images/${post.image}`}
             alt={post.title}
             className="w-full h-full object-cover"
           />

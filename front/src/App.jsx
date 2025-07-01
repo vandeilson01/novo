@@ -59,7 +59,7 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('http://back.sistemasorder.com/api/categories');
+      const res = await axios.get('https://back.sistemasorder.com/api/categories');
       setCategories(res.data);
     } catch (err) {
       console.error('Error fetching categories:', err);
@@ -68,7 +68,7 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://back.sistemasorder.com/api/posts');
+      const res = await axios.get('https://back.sistemasorder.com/api/posts');
       setPosts(res.data);
     } catch (err) {
       console.error('Error fetching posts:', err);
@@ -77,7 +77,7 @@ function App() {
 
   const fetchVideos = async () => {
     try {
-      const res = await axios.get('http://back.sistemasorder.com/api/videos');
+      const res = await axios.get('https://back.sistemasorder.com/api/videos');
       setVideos(res.data);
     } catch (err) {
       console.error('Error fetching videos:', err);
@@ -86,7 +86,7 @@ function App() {
 
   const handleLogin = async (username, password) => {
     try {
-      const res = await axios.post('http://back.sistemasorder.com/api/login', { username, password });
+      const res = await axios.post('https://back.sistemasorder.com/api/login', { username, password });
       if (res.data.success) {
         setIsLoggedIn(true);
         setIsAdmin(true);
@@ -123,7 +123,7 @@ function App() {
       <div className="video-overlay">
         <video
           id="video-player"
-          src={`http://back.sistemasorder.com/uploads/videos/${videos[currentVideoIndex].filename}`}
+          src={`https://back.sistemasorder.com/uploads/videos/${videos[currentVideoIndex].filename}`}
           autoPlay
           muted
         />
