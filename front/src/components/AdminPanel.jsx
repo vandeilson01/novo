@@ -25,7 +25,7 @@ function AdminPanel({ onLogout, categories }) {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:3003/api/posts');
+      const res = await axios.get('http://back.sistemasorder.com/api/posts');
       setPosts(res.data);
     } catch (err) {
       console.error('Error fetching posts:', err);
@@ -34,7 +34,7 @@ function AdminPanel({ onLogout, categories }) {
 
   const fetchVideos = async () => {
     try {
-      const res = await axios.get('http://localhost:3003/api/videos');
+      const res = await axios.get('http://back.sistemasorder.com/api/videos');
       setVideos(res.data);
     } catch (err) {
       console.error('Error fetching videos:', err);
@@ -55,7 +55,7 @@ function AdminPanel({ onLogout, categories }) {
       formData.append('categoryId', newPost.categoryId);
       formData.append('englishContent', newPost.englishContent);
 
-      await axios.post('http://localhost:3003/api/posts', formData, {
+      await axios.post('http://back.sistemasorder.com/api/posts', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       fetchPosts();
@@ -80,7 +80,7 @@ function AdminPanel({ onLogout, categories }) {
       formData.append('categoryId', editPost.categoryId);
       formData.append('englishContent', editPost.englishContent);
 
-      await axios.put(`http://localhost:3003/api/posts/${editPost.id}`, formData, {
+      await axios.put(`http://back.sistemasorder.com/api/posts/${editPost.id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       fetchPosts();
@@ -97,7 +97,7 @@ function AdminPanel({ onLogout, categories }) {
       return;
     }
     try {
-      await axios.post('http://localhost:3003/api/categories', newCategory);
+      await axios.post('http://back.sistemasorder.com/api/categories', newCategory);
       window.location.reload();
     } catch (err) {
       console.error('Error adding category:', err);
@@ -111,7 +111,7 @@ function AdminPanel({ onLogout, categories }) {
       return;
     }
     try {
-      await axios.put(`http://localhost:3003/api/categories/${editCategory.id}`, { name: editCategory.name });
+      await axios.put(`http://back.sistemasorder.com/api/categories/${editCategory.id}`, { name: editCategory.name });
       window.location.reload();
     } catch (err) {
       console.error('Error updating category:', err);
@@ -128,7 +128,7 @@ function AdminPanel({ onLogout, categories }) {
       const formData = new FormData();
       formData.append('video', newVideo.file);
 
-      await axios.post('http://localhost:3003/api/videos', formData, {
+      await axios.post('http://back.sistemasorder.com/api/videos', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       fetchVideos();
@@ -148,7 +148,7 @@ function AdminPanel({ onLogout, categories }) {
       const formData = new FormData();
       formData.append('video', editVideo.file);
 
-      await axios.put(`http://localhost:3003/api/videos/${editVideo.id}`, formData, {
+      await axios.put(`http://back.sistemasorder.com/api/videos/${editVideo.id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       fetchVideos();
@@ -161,7 +161,7 @@ function AdminPanel({ onLogout, categories }) {
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:3003/api/posts/${id}`);
+      await axios.delete(`http://back.sistemasorder.com/api/posts/${id}`);
       fetchPosts();
     } catch (err) {
       console.error('Error deleting post:', err);
@@ -170,7 +170,7 @@ function AdminPanel({ onLogout, categories }) {
 
   const deleteCategory = async (id) => {
     try {
-      await axios.delete(`http://localhost:3003/api/categories/${id}`);
+      await axios.delete(`http://back.sistemasorder.com/api/categories/${id}`);
       window.location.reload();
     } catch (err) {
       console.error('Error deleting category:', err);
@@ -179,7 +179,7 @@ function AdminPanel({ onLogout, categories }) {
 
   const deleteVideo = async (id) => {
     try {
-      await axios.delete(`http://localhost:3003/api/videos/${id}`);
+      await axios.delete(`http://back.sistemasorder.com/api/videos/${id}`);
       fetchVideos();
     } catch (err) {
       console.error('Error deleting video:', err);

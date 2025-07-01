@@ -13,7 +13,7 @@ function Main({ posts, selectedCategory, onPostClick }) {
           onClick={() => onPostClick(post)}
         >
           <img
-            src={`http://localhost:3000/uploads/images/${post.image}`}
+            src={`http://back.sistemasorder.com/uploads/images/${post.image}`}
             alt={post.title}
             className="w-full h-full object-cover"
           />
