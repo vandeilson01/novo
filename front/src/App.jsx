@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
+import NavigationTwo from './components/NavigationTwo';
 import Main from './components/Main';
 import PostDetail from './components/PostDetail';
 import Login from './components/Login';
@@ -30,7 +31,7 @@ function App() {
     const resetTimer = () => {
       clearTimeout(inactivityTimeout);
       setShowVideos(false);
-      inactivityTimeout = setTimeout(() => setShowVideos(true), 3000);
+      inactivityTimeout = setTimeout(() => setShowVideos(true), 30000);
     };
 
     window.addEventListener('mousemove', resetTimer);
@@ -59,8 +60,9 @@ function App() {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get('https://back.sistemasorder.com/api/categories');
+      const res = await axios.get('http://localhost:3003/api/categories');
       setCategories(res.data);
+ 
     } catch (err) {
       console.error('Error fetching categories:', err);
     }
@@ -68,7 +70,7 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('https://back.sistemasorder.com/api/posts');
+      const res = await axios.get('http://localhost:3003/api/posts');
       setPosts(res.data);
     } catch (err) {
       console.error('Error fetching posts:', err);
@@ -77,7 +79,7 @@ function App() {
 
   const fetchVideos = async () => {
     try {
-      const res = await axios.get('https://back.sistemasorder.com/api/videos');
+      const res = await axios.get('http://localhost:3003/api/videos');
       setVideos(res.data);
     } catch (err) {
       console.error('Error fetching videos:', err);
@@ -86,7 +88,7 @@ function App() {
 
   const handleLogin = async (username, password) => {
     try {
-      const res = await axios.post('https://back.sistemasorder.com/api/login', { username, password });
+      const res = await axios.post('http://localhost:3003/api/login', { username, password });
       if (res.data.success) {
         setIsLoggedIn(true);
         setIsAdmin(true);
@@ -123,19 +125,20 @@ function App() {
       <div className="video-overlay">
         <video
           id="video-player"
-          src={`https://back.sistemasorder.com/uploads/videos/${videos[currentVideoIndex].filename}`}
+          src={`http://localhost:3003/uploads/videos/${videos[currentVideoIndex].filename}`}
           autoPlay
           muted
         />
       </div>
     );
   }
-
+ 
   if (isAdmin && isLoggedIn) {
     return <AdminPanel onLogout={handleLogout} categories={categories} />;
   }
 
-  if (isAdmin && !isLoggedIn) {
+  if (document.location.href== "http://localhost:5173/admin") {
+    // if (isAdmin && !isLoggedIn document.location.href== "http://localhost:5173/admin") {
     return <Login onLogin={handleLogin} />;
   }
 
@@ -143,7 +146,7 @@ function App() {
     return (
       <div>
         <Header />
-        <Navigation categories={categories} onCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} />
+        <NavigationTwo onBack={handleBack} onCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} />
         <PostDetail post={selectedPost} onBack={handleBack} />
       </div>
     );
@@ -154,12 +157,12 @@ function App() {
       <Header />
       <Navigation categories={categories} onCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} />
       <Main posts={posts} selectedCategory={selectedCategory} onPostClick={handlePostClick} />
-      <button
+      {/* <button
         className="fixed bottom-4 right-4 bg-red-500 text-white py-2 px-4 rounded"
         onClick={() => setIsAdmin(true)}
       >
         Admin Login
-      </button>
+      </button> */}
     </div>
   );
 }

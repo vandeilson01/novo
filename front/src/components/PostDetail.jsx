@@ -5,14 +5,14 @@ function PostDetail({ post, onBack }) {
         <article
           key={post.id}
           tabIndex="0"
-          className="rounded-3xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition mb-8 bg-white relative"
+          className="stetic rounded-3xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition mb-8 bg-white relative"
         >
           <img
-            src={`https://back.sistemasorder.com/uploads/images/${post.image}`}
+            src={`http://localhost:3003/uploads/images/${post.image}`}
             alt={post.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-6 left-6 text-white drop-shadow-lg  ">
+          <div className="titles absolute top-6 left-6 text-white drop-shadow-lg  ">
             <h2 className="text-4xl font-bold">{post.title}</h2>
             <p className="text-base">{post.description}</p>
             

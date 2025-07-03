@@ -2,8 +2,8 @@ function Navigation({ categories, onCategoryClick, selectedCategory }) {
   return (
     <nav className="flex gap-4 pb-8 overflow-x-auto scrollbar-hide">
       <button
-        className={`flex items-center gap-3 bg-yellow-500 text-white font-bold py-4 px-6 rounded-full shadow hover:bg-yellow-600 transition ${
-          !selectedCategory ? 'ring-2 ring-white' : ''
+        className={`flex items-center border-0 buts gap-3 bg-[#d69d46] text-white font-bold py-4 px-6 rounded-full shadow hover:bg-yellow-600 transition ${
+          !selectedCategory ? ' ' : ''
         }`}
         onClick={() => onCategoryClick(null)}
       >
@@ -14,8 +14,8 @@ function Navigation({ categories, onCategoryClick, selectedCategory }) {
       {categories.map((category) => (
         <button
           key={category.id}
-          className={`bg-yellow-500 text-white font-bold py-4 px-6 rounded-full shadow hover:bg-yellow-600 transition whitespace-nowrap ${
-            selectedCategory === category.id ? 'ring-2 ring-white' : ''
+          className={`bg-[#d69d46] buts text-white font-bold py-4 px-6 rounded-full shadow hover:bg-yellow-600 transition whitespace-nowrap ${
+            selectedCategory === category.id ? ' ' : ''
           }`}
           onClick={() => onCategoryClick(category.id)}
         >

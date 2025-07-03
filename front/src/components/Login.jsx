@@ -10,8 +10,8 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="flex login justify-center items-center h-screen">
+      <div className="bg-white   rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
         <input
           type="text"
